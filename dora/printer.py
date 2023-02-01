@@ -14,41 +14,41 @@ class Printer:
 
     def positive(self, text: str):
         if self.color:
-            print(f"{Fore.GREEN}[+]{Style.RESET_ALL} {text}")
+            print(f"{0}[+]{1} {2}".format(Fore.GREEN, Style.RESET_ALL, text))
         else:
-            print(f"[+] {text}")
+            print("[+] {}".format(text))
 
 
     def negative(self, text: str):
         if self.color:
-            print(f"{Fore.RED}[-]{Style.RESET_ALL} {text}")
+            print("{0}[-]{1} {2}".format(Fore.RED,Style.RESET_ALL,text))
         else:
-            print(f"[-] {text}")
+            print("[-] {}".format(text))
 
 
     def good(self, text: str):
         if self.color:
-            print(f"{Fore.GREEN}[✔]{Style.RESET_ALL} {text}")
+            print("{0}[✔]{1} {2}".format(Fore.GREEN, Style.RESET_ALL,text))
         else:
-            print(f"[✔] {text}")
+            print("[✔] {}".format(text))
 
 
     def bad(self, text: str):
         if self.color:
-            print(f"{Fore.RED}[✘]{Style.RESET_ALL} {text}")
+            print("{0}[✘]{1} {2}".format(Fore.RED,Style.RESET_ALL,text))
         else:
-            print(f"[✘] {text}")
+            print("[✘] {}".format(text))
 
 
     def warning(self, text: str):
         if self.color:
-            print(f"{Fore.YELLOW}[!]{Style.RESET_ALL} {text}")
+            print(f"{0}[!]{1} {2}".format(Fore.YELLOW,Style.RESET_ALL,text))
         else:
-            print(f"[+] {text}")
+            print("[+] {}".format(text))
 
 
     def info(self, text: str):
         if self.color:
-            print(f"{Fore.BLUE}[i]{Style.RESET_ALL} {text}", end="\n" if self.verbose else "\r")
+            print("{0}[i]{1} {2}".format(Fore.BLUE,Style.RESET_ALL,text), end="\n" if self.verbose else "\r")
         else:
-            print(f"[i] {text}", end="\n" if self.verbose else "\r")
+            print("[i] {}".format(text), end="\n" if self.verbose else "\r")
