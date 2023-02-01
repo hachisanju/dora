@@ -14,7 +14,7 @@ class Printer:
 
     def positive(self, text: str):
         if self.color:
-            print(f"{0}[+]{1} {2}".format(Fore.GREEN, Style.RESET_ALL, text))
+            print("{0}[+]{1} {2}".format(Fore.GREEN, Style.RESET_ALL, text))
         else:
             print("[+] {}".format(text))
 
@@ -42,7 +42,7 @@ class Printer:
 
     def warning(self, text: str):
         if self.color:
-            print(f"{0}[!]{1} {2}".format(Fore.YELLOW,Style.RESET_ALL,text))
+            print("{0}[!]{1} {2}".format(Fore.YELLOW,Style.RESET_ALL,text))
         else:
             print("[+] {}".format(text))
 
