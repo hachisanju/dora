@@ -111,7 +111,7 @@ def main():
         printer.info("Path to ripgrep: {}".format(rg_path))
         printer.info("RegEx source: {}".format(json_data)
 
-    file = open('{}'.format(json_data), 'r')
+    '''file = open('{}'.format(json_data), 'r')
     try:
         try:
             data = json.loads(file.read())
@@ -158,7 +158,7 @@ def main():
                 # Adding a spacer to the output for better legibility
                 print("\n")
     finally:
-        file.close()
+        file.close()'''
     printer.good("Scan has been completed!")
 
 
