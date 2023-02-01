@@ -10,13 +10,13 @@ from dora.printer import Printer
 
 def ripgrep(regex, path, rg_path, rg_arguments, rg_args_from_json_data):
     if not color:
-        rg_arguments = f"{rg_arguments} --color=never"
+        rg_arguments = "{} --color=never".format(rg_arguments)
 
     if rg_args_from_json_data:
-        rg_arguments = f"{rg_arguments} {rg_args_from_json_data}"
+        rg_arguments = "{0} {1}".format(rg_arguments,rg_args_from_json_data)
 
     global command
-    command = f"{rg_path} {rg_arguments} -- \"{regex}\" \"{path}\""
+    command = "{0} {1} -- \"{2}\" \"{3}\"".format(rg_path,rg_arguments,regex,path)
 
     output, error = subprocess.Popen(command,
                                      stdout=subprocess.PIPE,
@@ -63,7 +63,7 @@ def main():
 
     parser.add_argument("--json",
                         action="store",
-                        default=f"{dora_path}/db/data.json",
+                        default="{}/db/data.json".format(dora_path),
                         help="Load regex data from a valid JSON file (default: db/data.json)"
                         )
 
@@ -108,8 +108,8 @@ def main():
         sys.exit(1)
 
     if verbose:
-        printer.info(f"Path to ripgrep: {rg_path}")
-        printer.info(f"RegEx source: {json_data}")
+        printer.info("Path to ripgrep: {}".format(rg_path))
+        printer.info("RegEx source: {}".format(json_data)
 
     with open(json_data, "r") as f:
         try:
@@ -128,11 +128,11 @@ def main():
             rg_args_from_json_data = data.get(service_name).get("flags")
             info = data.get(service_name).get("info")
 
-            printer.info(f"Checking for {service_name or regex}")
+            printer.info("Checking for {}".format(service_name))
             output, error, command = ripgrep(regex=regex, path=path, rg_path=rg_path, rg_arguments=rg_arguments, rg_args_from_json_data=rg_args_from_json_data)
 
             if verbose:
-                printer.info(f"{command}\n")
+                printer.info("{}\n".formt(command))
 
             # Erase the current line and return the cursor to the beginning.
             # This has no effect on the terminal output when --verbose is set
@@ -143,11 +143,11 @@ def main():
             if error:
                 printer.warning("Error from ripgrep")
                 printer.content(error)
-                printer.content(f"\nThe command that caused the error:\n $ {command}")
+                printer.content("\nThe command that caused the error:\n $ {}".format(command))
                 sys.exit()
 
             if output:
-                printer.positive(f"{service_name or regex}")
+                printer.positive("{}".format(service_name))
 
                 if info is not None:
                     printer.content(info)
