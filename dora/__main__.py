@@ -111,8 +111,6 @@ def main():
         printer.info("Path to ripgrep: {}".format(rg_path))
         printer.info("RegEx source: {}".format(json_data)
 
-    printer.good("Scan has been completed!")
-
 
 if __name__ == "__main__":
     main()
