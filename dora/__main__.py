@@ -109,7 +109,7 @@ def main():
 
     if verbose:
         printer.info("Path to ripgrep: {}".format(rg_path))
-        printer.info("RegEx source: {}".format(json_data)
+        printer.info("RegEx source: {}".format(json_data))
 
 
 if __name__ == "__main__":
