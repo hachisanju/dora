@@ -111,54 +111,6 @@ def main():
         printer.info("Path to ripgrep: {}".format(rg_path))
         printer.info("RegEx source: {}".format(json_data)
 
-    '''file = open('{}'.format(json_data), 'r')
-    try:
-        try:
-            data = json.loads(file.read())
-        except json.decoder.JSONDecodeError as e:
-            printer.warning("Provided JSON data is invalid")
-            printer.content(str(e))
-            sys.exit(1)
-
-        for item in data:
-            regex = item.strip()
-            service_name = item
-
-            regex = data.get(service_name).get("regex")
-            # Awfully long variable name, I know. I'm open for suggestions.
-            rg_args_from_json_data = data.get(service_name).get("flags")
-            info = data.get(service_name).get("info")
-
-            printer.info("Checking for {}".format(service_name))
-            output, error, command = ripgrep(regex=regex, path=path, rg_path=rg_path, rg_arguments=rg_arguments, rg_args_from_json_data=rg_args_from_json_data)
-
-            if verbose:
-                printer.info("{}\n".formt(command))
-
-            # Erase the current line and return the cursor to the beginning.
-            # This has no effect on the terminal output when --verbose is set
-            # and that is because of the extra newline (\n) while showing
-            # the ripgrep command.
-            print("\033[2K", end="\r", flush=True)
-
-            if error:
-                printer.warning("Error from ripgrep")
-                printer.content(error)
-                printer.content("\nThe command that caused the error:\n $ {}".format(command))
-                sys.exit()
-
-            if output:
-                printer.positive("{}".format(service_name))
-
-                if info is not None:
-                    printer.content(info)
-
-                printer.content(output)
-
-                # Adding a spacer to the output for better legibility
-                print("\n")
-    finally:
-        file.close()'''
     printer.good("Scan has been completed!")
 
 
