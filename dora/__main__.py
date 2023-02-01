@@ -111,7 +111,7 @@ def main():
         printer.info("Path to ripgrep: {}".format(rg_path))
         printer.info("RegEx source: {}".format(json_data)
 
-    f = open(json_data, "r")
+    f = open("".format(json_data), "r")
     try:
         try:
             data = json.loads(f.read())
